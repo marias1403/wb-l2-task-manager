@@ -1,4 +1,4 @@
-.toolbar__button {
+.button {
   padding: 0;
   height: 30px;
   width: fit-content;
@@ -16,6 +16,6 @@
   cursor: pointer;
 }
 
-.toolbar__button:hover {
+.button:hover {
   opacity: .7;
 }

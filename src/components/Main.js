@@ -8,17 +8,17 @@ function Main() {
     <main className='content page__content'>
       <section className='toolbar content__section'>
         <div className='toolbar__sort'>
-          <button className='toolbar__button'>
+          <button className='button'>
             <img className='toolbar__sort-icon' src={sortIcon} alt='Иконка сортировки'/>
             <span>По дате создания</span>
           </button>
-          <button className='toolbar__button'>
+          <button className='button'>
             <img className='toolbar__sort-icon' src={sortIcon} alt='Иконка сортировки'/>
             <span>По дате выполнения</span>
           </button>
         </div>
         <div className='toolbar__task-controls'>
-          <button className='toolbar__button'>
+          <button className='button'>
             <img className='toolbar__add-icon' src={addIcon} alt='Иконка добавления'/>
             <span>Добавить задачу</span>
           </button>

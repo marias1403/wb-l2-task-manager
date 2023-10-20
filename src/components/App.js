@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
+import AddTaskPopup from './AddTaskPopup';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Main />
         <Footer />
       </div>
+      <AddTaskPopup />
     </div>
   );
 }

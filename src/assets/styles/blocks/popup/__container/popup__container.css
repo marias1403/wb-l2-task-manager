@@ -1,0 +1,6 @@
+.popup__container {
+  width: 400px;
+  height: fit-content;
+  box-sizing: border-box;
+  position: relative;
+}
