@@ -1,0 +1,36 @@
+@import url(../../vendor/normalize.css);
+@import url(../../vendor/fonts.css);
+
+@import url(./blocks/page/page.css);
+@import url(./blocks/page/__container/page__container.css);
+
+@import url(./blocks/header/header.css);
+@import url(./blocks/page/__header/page__header.css);
+@import url(./blocks/header/__title/header__title.css);
+
+@import url(./blocks/content/content.css);
+@import url(./blocks/page/__content/page__content.css);
+@import url(./blocks/content/__section/content__section.css);
+
+@import url(./blocks/toolbar/toolbar.css);
+@import url(./blocks/toolbar/__sort/toolbar__sort.css);
+@import url(./blocks/toolbar/__button/toolbar__button.css);
+@import url(./blocks/toolbar/__sort-icon/toolbar__sort-icon.css);
+@import url(./blocks/toolbar/__task-controls/toolbar__task-controls.css);
+@import url(./blocks/toolbar/__add-icon/toolbar__add-icon.css);
+@import url(./blocks/toolbar/__notification/toolbar__notification.css);
+
+@import url(./blocks/tasks/__list/tasks__list.css);
+@import url(./blocks/task-item/task-item.css);
+@import url(./blocks/task-item/__content/task-item__content.css);
+@import url(./blocks/checkbox/checkbox.css);
+@import url(./blocks/task-item/__text-wrapper/task-item__text-wrapper.css);
+@import url(./blocks/task-item/__title/task-item__title.css);
+@import url(./blocks/task-item/__date/task-item__date.css);
+@import url(./blocks/task-item/__button-wrapper/task-item__button-wrapper.css);
+@import url(./blocks/task-item/__edit-button/task-item__edit-button.css);
+@import url(./blocks/task-item/__delete-button/task-item__delete-button.css);
+
+@import url(./blocks/footer/footer.css);
+@import url(./blocks/page/__footer/page__footer.css);
+@import url(./blocks/footer/__text/footer__text.css);

@@ -1,0 +1,16 @@
+.task-item__delete-button {
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  background-image: url(../../../../img/delete_icon.svg);
+  background-color: transparent;
+  border: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 28px 28px;
+  cursor: pointer;
+}
+
+.task-item__delete-button:hover {
+  opacity: .7;
+}

@@ -1,0 +1,16 @@
+.toolbar__notification {
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  background-image: url(../../../../img/bell_icon.svg);
+  background-color: transparent;
+  border: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px 30px;
+  cursor: pointer;
+}
+
+.toolbar__notification:hover {
+  opacity: .7;
+}
