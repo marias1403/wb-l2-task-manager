@@ -21,6 +21,7 @@
 @import url(./blocks/toolbar/__notification/toolbar__notification.css);
 
 @import url(./blocks/tasks/__list/tasks__list.css);
+@import url(./blocks/tasks/__no-tasks/tasks__no-tasks.css);
 @import url(./blocks/task-item/task-item.css);
 @import url(./blocks/task-item/__content/task-item__content.css);
 @import url(./blocks/checkbox/checkbox.css);

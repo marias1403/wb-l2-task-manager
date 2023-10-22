@@ -3,7 +3,7 @@ import sortIcon from '../assets/img/sort_icon.svg';
 import addIcon from '../assets/img/add_icon.svg';
 import Card from './Card';
 
-function Main() {
+function Main(props) {
   return (
     <main className='content page__content'>
       <section className='toolbar content__section'>
@@ -18,7 +18,7 @@ function Main() {
           </button>
         </div>
         <div className='toolbar__task-controls'>
-          <button className='button'>
+          <button onClick={props.onAddTask} className='button'>
             <img className='toolbar__add-icon' src={addIcon} alt='Иконка добавления'/>
             <span>Добавить задачу</span>
           </button>
@@ -27,9 +27,13 @@ function Main() {
       </section>
 
       <section className='tasks content__section'>
-        <ul className='tasks__list'>
-          <Card />
-        </ul>
+        {
+          props.tasks.length === 0
+            ? <p className='tasks__no-tasks'>Пока задач нет</p>
+            : <ul className='tasks__list'>
+              {props.tasks.map((task) => <Card key={task.id} task={task} onDeleteClick={props.onDeleteTask} onEditClick={props.onEditTask} />)}
+            </ul>
+        }
       </section>
     </main>
   );
