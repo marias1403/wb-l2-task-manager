@@ -26,8 +26,14 @@ function App() {
     closePopup();
   }
 
-  function handleEditTaskSubmit() {
-
+  function handleEditTaskSubmit(editedTask) {
+    const taskIndex = tasks.findIndex(task => task.id === editedTask.id);
+    if (taskIndex !== -1) {
+      const updatedTasks = [...tasks];
+      updatedTasks[taskIndex] = editedTask;
+      setTasks(updatedTasks);
+    }
+    closePopup();
   }
 
   function generateId() {
@@ -56,14 +62,15 @@ function App() {
     return `${day}.${month}.${year} ${hours}:${minutes}`;
   }
 
-  function formatDateStringForDatetimeInput(deadlineString, inputId) {
-    let parts = deadlineString.split(/[\s.]+/);
-    let day = parts[0];
-    let month = parts[1];
-    let year = parts[2];
-    let hour = parts[3];
-
-    return year + "-" + month + "-" + day + "T" + hour ;
+  function formatDateStringForDatetimeInput(deadlineString) {
+    if (deadlineString) {
+      let parts = deadlineString.split(/[\s.]+/);
+      let day = parts[0];
+      let month = parts[1];
+      let year = parts[2];
+      let hour = parts[3];
+      return year + "-" + month + "-" + day + "T" + hour ;
+    }
   }
 
   function toggleCheckedTask(id) {
@@ -112,6 +119,7 @@ function App() {
         onClose={closePopup}
         onEditTask={handleEditTaskSubmit}
         onFormatDeadline={formatDateStringForDatetimeInput}
+        onStringifyDeadline={formatDeadlineToString}
       />
     </div>
   );

@@ -2,10 +2,19 @@ import React, { useState, useEffect } from 'react';
 import Popup from './Popup';
 
 function EditTaskPopup(props) {
+  const [deadline, setDeadline] = useState('');
   const [taskToEdit, setTaskToEdit] = useState(props.task);
 
   useEffect(() => {
     setTaskToEdit(props.task);
+  }, [props.task]);
+
+  useEffect(() => {
+    if (!props.task) {
+      return;
+    } else {
+      setDeadline(props.onFormatDeadline(props.task.deadline));
+    }
   }, [props.task]);
 
   function handleInputChange(e) {
@@ -17,12 +26,31 @@ function EditTaskPopup(props) {
     return null;
   }
 
+  if (!props.task) {
+    return null;
+  }
+
+  if (deadline === '') {
+    return null;
+  }
+
+  function handleChangeDate(e) {
+    setDeadline(e.target.value);
+    const { name, value } = e.target;
+    setTaskToEdit({ ...taskToEdit, [name]: props.onStringifyDeadline(value) });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.onEditTask(taskToEdit);
+  }
+
   return <Popup
     isOpen={props.isOpen}
     name={'editTask'}
     title={'Редактировать задачу'}
     onClose={props.onClose}
-    onSubmit={props.onEditTask}
+    onSubmit={handleSubmit}
     buttonText={'Изменить'}
   >
     <label className='popup__label' htmlFor='titleForEdit'>Название</label>
@@ -45,8 +73,8 @@ function EditTaskPopup(props) {
       type='datetime-local'
       className='popup__input'
       required
-      value={props.onFormatDeadline(taskToEdit.deadline)}
-      onChange={handleInputChange}
+      value={deadline}
+      onChange={handleChangeDate}
     />
   </Popup>
 }
