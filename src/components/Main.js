@@ -31,7 +31,12 @@ function Main(props) {
           props.tasks.length === 0
             ? <p className='tasks__no-tasks'>Пока задач нет</p>
             : <ul className='tasks__list'>
-              {props.tasks.map((task) => <Card key={task.id} task={task} onDeleteClick={props.onDeleteTask} onEditClick={props.onEditTask} />)}
+              {props.tasks.map((task) => <Card
+                key={task.id}
+                task={task}
+                onDeleteClick={props.onDeleteTask}
+                onEditClick={props.onEditTask}
+                onCheckboxClick={props.onCheckTask} />)}
             </ul>
         }
       </section>

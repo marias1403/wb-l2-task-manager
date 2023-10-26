@@ -6,8 +6,6 @@ function AddTaskPopup(props) {
   const [deadline, setDeadline] = useState('');
   const isOpen = props.isOpen ? 'popup_opened' : '';
 
-  console.log(deadline);
-
   function handleChangeTitle(e) {
     setTitle(e.target.value);
   }

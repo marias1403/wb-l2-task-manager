@@ -1,6 +1,9 @@
 import React from 'react';
 
 function Card(props) {
+  function handleCheckboxClick() {
+    props.onCheckboxClick(props.task.id);
+  }
   function handleEditClick() {
     props.onEditClick(props.task);
   }
@@ -13,7 +16,7 @@ function Card(props) {
     <li className='task-item'>
       <div className='task-item__content'>
         <div className='checkbox'>
-          <input className='checkbox__input' type='checkbox' id={props.task.id} />
+          <input onChange={handleCheckboxClick} className='checkbox__input' type='checkbox' id={props.task.id} checked={props.task.isChecked} />
             <span className='checkbox__checkmark'></span>
         </div>
         <div className='task-item__text-wrapper'>
