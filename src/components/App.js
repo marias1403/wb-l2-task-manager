@@ -10,6 +10,28 @@ function App() {
   const [selectedTask, setSelectedTask] = useState(null);
   const [isAddTaskPopupOpen, setIsAddTaskPopupOpen] = useState(false);
   const [isEditTaskPopupOpen, setIsEditTaskPopupOpen] = useState(false);
+  const [sortByCreatedAtAsc, setSortByCreatedAtAsc] = useState(true);
+  const [sortByDeadlineAsc, setSortByDeadlineAsc] = useState(true);
+
+  function toggleSortByCreatedAt() {
+    setSortByCreatedAtAsc(!sortByCreatedAtAsc);
+    sortTasks('createdAt', sortByCreatedAtAsc);
+  }
+
+  function toggleSortByDeadline() {
+    setSortByDeadlineAsc(!sortByDeadlineAsc);
+    sortTasks('deadline', sortByDeadlineAsc);
+  }
+
+  const sortTasks = (key, ascending) => {
+    const sortedTasks = [...tasks];
+    sortedTasks.sort((a, b) => {
+      const valueA = new Date(formatDateStringForDatetimeInput(a[key]));
+      const valueB = new Date(formatDateStringForDatetimeInput(b[key]));
+      return ascending ? valueA - valueB : valueB - valueA;
+    });
+    setTasks(sortedTasks);
+  }
 
   function handleAddTaskClick() {
     setIsAddTaskPopupOpen(true);
@@ -110,7 +132,9 @@ function App() {
           onAddTask={handleAddTaskClick}
           onEditTask={handleEditTask}
           onDeleteTask={handleDeleteTask}
-          onCheckTask={toggleCheckedTask} />
+          onCheckTask={toggleCheckedTask}
+          onSortByCreatedAt={toggleSortByCreatedAt}
+          onSortByDeadline={toggleSortByDeadline} />
         <Footer />
       </div>
       <AddTaskPopup

@@ -8,11 +8,11 @@ function Main(props) {
     <main className='content page__content'>
       <section className='toolbar content__section'>
         <div className='toolbar__sort'>
-          <button className='button'>
+          <button className='button' onClick={props.onSortByCreatedAt} type='button'>
             <img className='toolbar__sort-icon' src={sortIcon} alt='Иконка сортировки'/>
             <span>По дате создания</span>
           </button>
-          <button className='button'>
+          <button className='button' onClick={props.onSortByDeadline} type='button'>
             <img className='toolbar__sort-icon' src={sortIcon} alt='Иконка сортировки'/>
             <span>По дате выполнения</span>
           </button>
