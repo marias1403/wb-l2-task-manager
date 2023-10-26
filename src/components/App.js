@@ -21,7 +21,7 @@ function App() {
   }
 
   function handleAddTaskSubmit(newCard) {
-    const updatedTasks = [...tasks, newCard];
+    const updatedTasks = [newCard, ...tasks];
     setTasks(updatedTasks);
     closePopup();
   }
@@ -74,13 +74,21 @@ function App() {
   }
 
   function toggleCheckedTask(id) {
-    const updatedTasks = tasks.map(task => {
-      if (task.id === id) {
-        return { ...task, isChecked: !task.isChecked };
+    const checkedTasks = tasks.filter(task => task.isChecked);
+    const uncheckedTasks = tasks.filter(task => !task.isChecked);
+    const taskToToggle = tasks.find(task => task.id === id);
+
+    if (taskToToggle) {
+      if (taskToToggle.isChecked) {
+        const updatedCheckedTasks = checkedTasks.filter((task) => task.id !== id);
+        const updatedTasks = [...uncheckedTasks, { ...taskToToggle, isChecked: false }, ...updatedCheckedTasks];
+        setTasks(updatedTasks);
+      } else {
+        const updatedUncheckedTasks = uncheckedTasks.filter((task) => task.id !== id);
+        const updatedTasks = [...updatedUncheckedTasks, { ...taskToToggle, isChecked: true }, ...checkedTasks];
+        setTasks(updatedTasks);
       }
-      return task;
-    });
-    setTasks(updatedTasks);
+    }
   }
 
   function handleEditTask(taskData) {
