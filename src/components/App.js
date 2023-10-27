@@ -1,9 +1,14 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import AddTaskPopup from './AddTaskPopup';
 import EditTaskPopup from './EditTaskPopup';
+import Login from './Login';
+import Register from './Register';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -12,6 +17,8 @@ function App() {
   const [isEditTaskPopupOpen, setIsEditTaskPopupOpen] = useState(false);
   const [sortByCreatedAtAsc, setSortByCreatedAtAsc] = useState(true);
   const [sortByDeadlineAsc, setSortByDeadlineAsc] = useState(true);
+  const [currentUser, setCurrentUser] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   function toggleSortByCreatedAt() {
     setSortByCreatedAtAsc(!sortByCreatedAtAsc);
@@ -124,36 +131,54 @@ function App() {
   }
 
   return (
-    <div className='page'>
-      <div className='page__container'>
-        <Header />
-        <Main
-          tasks={tasks}
-          onAddTask={handleAddTaskClick}
-          onEditTask={handleEditTask}
-          onDeleteTask={handleDeleteTask}
-          onCheckTask={toggleCheckedTask}
-          onSortByCreatedAt={toggleSortByCreatedAt}
-          onSortByDeadline={toggleSortByDeadline} />
-        <Footer />
+    <CurrentUserContext.Provider value={ currentUser }>
+      <div className='page'>
+        <div className='page__container'>
+          <Header />
+          <Routes>
+            <Route
+              path='/sign-in'
+              element={ <Login /> } />
+            <Route
+              path='/sign-up'
+              element={ <Register /> } />
+            <Route
+              path='/'
+              element={ <ProtectedRoute
+                path='/'
+                loggedIn={isLoggedIn}
+                component={Main}
+                childProps={{
+                  'tasks': tasks,
+                  'onAddTask': handleAddTaskClick,
+                  'onEditTask': handleEditTask,
+                  'onDeleteTask': handleDeleteTask,
+                  'onCheckTask': toggleCheckedTask,
+                  'onSortByCreatedAt': toggleSortByCreatedAt,
+                  'onSortByDeadline': toggleSortByDeadline
+                }}
+              /> } />
+          </Routes>
+          <Footer />
+        </div>
+        <AddTaskPopup
+          isOpen={isAddTaskPopupOpen}
+          onClose={closePopup}
+          onAddTask={handleAddTaskSubmit}
+          onGenerateId={generateId}
+          onGetCreatedAt={getCurrentDateAndTime}
+          onFormatDeadline={formatDeadlineToString}
+        />
+        <EditTaskPopup
+          task={selectedTask}
+          isOpen={isEditTaskPopupOpen}
+          onClose={closePopup}
+          onEditTask={handleEditTaskSubmit}
+          onFormatDeadline={formatDateStringForDatetimeInput}
+          onStringifyDeadline={formatDeadlineToString}
+        />
       </div>
-      <AddTaskPopup
-        isOpen={isAddTaskPopupOpen}
-        onClose={closePopup}
-        onAddTask={handleAddTaskSubmit}
-        onGenerateId={generateId}
-        onGetCreatedAt={getCurrentDateAndTime}
-        onFormatDeadline={formatDeadlineToString}
-      />
-      <EditTaskPopup
-        task={selectedTask}
-        isOpen={isEditTaskPopupOpen}
-        onClose={closePopup}
-        onEditTask={handleEditTaskSubmit}
-        onFormatDeadline={formatDateStringForDatetimeInput}
-        onStringifyDeadline={formatDeadlineToString}
-      />
-    </div>
+    </CurrentUserContext.Provider>
   );
 }
 
