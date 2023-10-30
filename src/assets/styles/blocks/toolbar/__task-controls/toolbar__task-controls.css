@@ -1,7 +1,0 @@
-.toolbar__task-controls {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  column-gap: 30px;
-}

@@ -7,7 +7,7 @@ function EditTaskPopup(props) {
 
   useEffect(() => {
     setTaskToEdit(props.task);
-  }, [props.task]);
+  }, [props.task, props]);
 
   useEffect(() => {
     if (!props.task) {
@@ -15,12 +15,7 @@ function EditTaskPopup(props) {
     } else {
       setDeadline(props.onFormatDeadline(props.task.deadline));
     }
-  }, [props.task]);
-
-  function handleInputChange(e) {
-    const { name, value } = e.target;
-    setTaskToEdit({ ...taskToEdit, [name]: value });
-  }
+  }, [props.task, props]);
 
   if (!taskToEdit) {
     return null;
@@ -32,6 +27,11 @@ function EditTaskPopup(props) {
 
   if (deadline === '') {
     return null;
+  }
+
+  function handleInputChange(e) {
+    const { name, value } = e.target;
+    setTaskToEdit({ ...taskToEdit, [name]: value });
   }
 
   function handleChangeDate(e) {
