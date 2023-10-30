@@ -20,24 +20,23 @@ function App() {
   const [sortByCreatedAtAsc, setSortByCreatedAtAsc] = useState(true);
   const [sortByDeadlineAsc, setSortByDeadlineAsc] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
 
   useEffect(() => {
-    loadTasksFromLocalStorage();
-    loadCurrentUserFromLocalStorage();
-
     const jwtToken = localStorage.getItem('jwt');
     if (jwtToken) {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
     }
-  }, []);
+    loadTasksFromLocalStorage();
+    loadCurrentUserFromLocalStorage();
+  }, [isLoggedIn]);
 
   useEffect(() => {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
-        .register('/service-worker.js')
+        .register('service-worker.js')
         .then(registration => {
           console.log('Service Worker зарегистрирован с успехом:', registration);
         })
@@ -173,8 +172,12 @@ function App() {
   }
 
   const handleLogout = () => {
-    localStorage.removeItem('jwt');
+    setIsLoggedIn(false);
+    updateTasksAndSaveToLocalStorage([]);
     updateCurrentUserAndSaveToLocalStorage({});
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('tasks');
+    localStorage.removeItem('currentUser');
   };
 
   function generateId() {
@@ -245,6 +248,10 @@ function App() {
     setCurrentUser(user);
     saveCurrentUserToLocalStorage(user);
   };
+
+  if (isLoggedIn === null) {
+    return <div>loading...</div>
+  }
 
   return (
     <CurrentUserContext.Provider value={ currentUser }>

@@ -23,13 +23,20 @@ function Main(props) {
   }, 10000);
 
   const sendNotification = (title, options) => {
-    Notification.requestPermission().then((result) => {
-      if (result === "granted") {
-        navigator.serviceWorker.getRegistration().then(function(reg) {
-          reg.showNotification(title, options);
-        });
-      }
-    });
+    Notification.requestPermission()
+      .then((result) => {
+        if (result === "granted") {
+          navigator.serviceWorker.getRegistration().then(function (reg) {
+            reg.showNotification(title, options)
+              .then(() => {
+                console.log("Уведомление успешно отправлено");
+              })
+              .catch((error) => {
+                console.error("Ошибка отправки уведомления:", error);
+              });
+          });
+        }
+      });
   }
 
   return (
