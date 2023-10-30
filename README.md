@@ -1,70 +1,35 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# WB-L2-TaskManager
+# Планировщик задач
+Это веб-приложение разработано с использованием React и предназначено для помощи пользователям в управлении своим временем. Приложение позволяет создавать, управлять и отслеживать задачи с уведомлениями о ближайших сроках выполнения задач.
+## Основные функции
+### Создание новых задач
+Пользователи могут создавать новые задачи, предоставляя следующую информацию:
+* Название задачи
+* Срок выполнения (дата и время)
+### Просмотр существующих задач
+Приложение позволяет просматривать все созданные задачи с возможностью сортировки по дате создания или сроку выполнения.
+### Управление задачами
+Пользователи могут выполнять следующие действия с задачами:
+* Помечать задачи как выполненные.
+* Изменять информацию о задачах.
+* Удалять задачи. 
+### Уведомления о задачах
+Пользователи получают уведомления в браузере о задачах, срок выполнения которых приближается.
+## Технические характеристики
+### Фронтенд
+Фронтенд разработан с использованием библиотеки React.
+### Хранение данных
+Данные о задачах хранятся в хранилище браузера, используя localStorage. Это обеспечивает локальное сохранение задач между сеансами.
+### Уведомления
+Для уведомлений в браузере используется Service Workers. Пользователи получают уведомления о задачах, которые близки к сроку выполнения.
+## Дополнительные функции
+### Аутентификация
+Приложение предоставляет возможность регистрации и авторизации пользователей с использованием JWT-токенов. Серверная часть аутентификации симулирована: приложение вызывает метод makeAuthRequest, который возвращает токены. Токены проверяются при каждом важном действии пользователя.
+## Запуск приложения
+Для запуска приложения, выполните следующие шаги:
+* Убедитесь, что на вашем компьютере установлен Node.js.
+* Склонируйте репозиторий приложения или загрузите его с ссылки.
+* Перейдите в директорию проекта и выполните следующие команды:
+### `npm install`
+### `npm run start`
+* Откройте браузер и перейдите по адресу http://localhost:3000 для начала использования приложения.
