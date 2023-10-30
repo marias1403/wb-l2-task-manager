@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/wb-l2-task-manager/static/css/main.079e2496.css",
+    "main.js": "/wb-l2-task-manager/static/js/main.0e4ac9f6.js",
+    "static/media/Manrope-Regular.woff": "/wb-l2-task-manager/static/media/Manrope-Regular.2046a49b5fa996c43f44.woff",
+    "static/media/Manrope-Semibold.woff": "/wb-l2-task-manager/static/media/Manrope-Semibold.f4e54434d986b1395b3b.woff",
+    "static/media/Manrope-ExtraBold.woff": "/wb-l2-task-manager/static/media/Manrope-ExtraBold.af754df8afbc222b77e8.woff",
+    "static/media/Manrope-Regular.woff2": "/wb-l2-task-manager/static/media/Manrope-Regular.cb78aabfaaf5d95c8665.woff2",
+    "static/media/Manrope-Semibold.woff2": "/wb-l2-task-manager/static/media/Manrope-Semibold.0d44fe833dd4c7229544.woff2",
+    "static/media/Manrope-ExtraBold.woff2": "/wb-l2-task-manager/static/media/Manrope-ExtraBold.a90ad203eaed8bfd3323.woff2",
+    "static/media/edit_icon.svg": "/wb-l2-task-manager/static/media/edit_icon.83e9020784c15cebcf7e.svg",
+    "static/media/close-icon.svg": "/wb-l2-task-manager/static/media/close-icon.12509dc5edac188ae64fb8f232188c16.svg",
+    "static/media/add_icon.svg": "/wb-l2-task-manager/static/media/add_icon.14272d672b67c4a4245e3f2820f4a952.svg",
+    "static/media/sort_icon.svg": "/wb-l2-task-manager/static/media/sort_icon.c11833d9f0e2a8b4c4e9acd20b1cf486.svg",
+    "static/media/delete_icon.svg": "/wb-l2-task-manager/static/media/delete_icon.21322a48f2de6e2c5190.svg",
+    "static/media/check_icon.svg": "/wb-l2-task-manager/static/media/check_icon.27bf3a444227647e2163.svg",
+    "index.html": "/wb-l2-task-manager/index.html",
+    "main.079e2496.css.map": "/wb-l2-task-manager/static/css/main.079e2496.css.map",
+    "main.0e4ac9f6.js.map": "/wb-l2-task-manager/static/js/main.0e4ac9f6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.079e2496.css",
+    "static/js/main.0e4ac9f6.js"
+  ]
+}
